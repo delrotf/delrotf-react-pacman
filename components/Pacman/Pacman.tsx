@@ -60,12 +60,6 @@ const Pacman = props => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log(
-        rightDowned.current,
-        leftDowned.current,
-        upDowned.current,
-        downDowned.current
-      );
       if (rightDowned.current) {
         setXPosition(prev => {
           if (!xMaxes.includes(prev)) {
