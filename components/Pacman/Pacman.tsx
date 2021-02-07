@@ -16,7 +16,7 @@ const Pacman = props => {
   const leftDowned = useRef(false);
   const upDowned = useRef(false);
   const downDowned = useRef(false);
-  
+
   const [downedKey, setDownedKey] = useState();
   const [upedKey, setUpedKey] = useState();
   const [xPosition, setXPosition] = useState(0);
@@ -40,7 +40,7 @@ const Pacman = props => {
         break;
       default:
         console.log("Do nothing");
-        break;
+        return;
     }
 
     setDownedKey(key);
@@ -64,13 +64,14 @@ const Pacman = props => {
         break;
       default:
         console.log("Do nothing");
-        break;
+        return;
     }
 
     setUpedKey(key);
   };
 
   useEffect(() => {
+    console.log("downedKey, upedKey", downedKey, upedKey);
     while (rightDowned.current) {
       setXPosition(prev => (prev += speed));
     }
