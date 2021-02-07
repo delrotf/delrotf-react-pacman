@@ -72,6 +72,14 @@ const Pacman = props => {
 
   useEffect(() => {
     console.log("downedKey, upedKey", downedKey, upedKey);
+    console.log(rightDowned, leftDowned, upDowned, downDowned);
+    console.log(
+      rightDowned.current,
+      leftDowned.current,
+      upDowned.current,
+      downDowned.current
+    );
+
     while (rightDowned.current) {
       setXPosition(prev => (prev += speed));
     }
@@ -84,9 +92,9 @@ const Pacman = props => {
     while (downDowned.current) {
       setYPosition(prev => (prev += speed));
     }
-  }, [downedKey, upedKey]);
+  }, [downedKey]);
 
-  useEventListener("keydown", keyDownHandler);
+  // useEventListener("keydown", keyDownHandler);
   useEventListener("keyup", keyUpHandler);
 
   return (
