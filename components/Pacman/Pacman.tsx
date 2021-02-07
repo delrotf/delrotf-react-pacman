@@ -26,12 +26,15 @@ const Pacman = props => {
   const [xPosition, setXPosition] = useState(0);
   const [yPosition, setYPosition] = useState(0);
 
+  const intervalRef = useRef(null);
+
   const keyDownHandler = ({ key }) => {
     console.log("downed key", key);
     rightDowned.current = false;
     leftDowned.current = false;
     upDowned.current = false;
     downDowned.current = false;
+    clearInterval(intervalRef.current);
 
     switch (key) {
       case "ArrowRight":
@@ -61,7 +64,6 @@ const Pacman = props => {
         downDowned.current
       );
       if (rightDowned.current) {
-        console.log("while right", rightDowned.current);
         setXPosition(prev => {
           if (!xMaxes.includes(prev)) {
             return (prev += speed);
@@ -98,11 +100,18 @@ const Pacman = props => {
         });
       }
 
+      intervalRef.current = interval;
+
       return () => {
         clearInterval(interval);
       };
     }, 1500);
-  }, []);
+  }, [
+    rightDowned.current,
+    leftDowned.current,
+    upDowned.current,
+    downDowned.current
+  ]);
 
   loopPosition();
 
