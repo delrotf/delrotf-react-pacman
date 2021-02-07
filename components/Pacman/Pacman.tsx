@@ -72,16 +72,16 @@ const Pacman = props => {
   useEffect(() => {
     console.log("downedKey", downedKey);
 
-    while (rightDowned) {
+    while (rightDowned.current) {
       setXPosition(prev => (prev += speed));
     }
-    while (leftDowned) {
+    while (leftDowned.current) {
       setXPosition(prev => (prev -= speed));
     }
-    while (upDowned) {
+    while (upDowned.current) {
       setYPosition(prev => (prev -= speed));
     }
-    while (downDowned) {
+    while (downDowned.current) {
       setYPosition(prev => (prev += speed));
     }
   }, [downedKey, upedKey]);
