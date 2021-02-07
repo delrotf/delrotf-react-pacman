@@ -57,7 +57,7 @@ const Pacman = props => {
     setDownedKey(key)
   };
 
-  const loopPosition = useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       console.log(
         rightDowned.current,
