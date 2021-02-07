@@ -53,6 +53,8 @@ const Pacman = props => {
         console.log("Do nothing");
         return;
     }
+
+    setDownedKey(key)
   };
 
   const loopPosition = useCallback(() => {
@@ -106,12 +108,7 @@ const Pacman = props => {
         clearInterval(interval);
       };
     }, 1500);
-  }, [
-    rightDowned.current,
-    leftDowned.current,
-    upDowned.current,
-    downDowned.current
-  ]);
+  }, [downedKey]);
 
   loopPosition();
 
