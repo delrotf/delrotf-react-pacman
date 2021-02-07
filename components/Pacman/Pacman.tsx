@@ -80,21 +80,22 @@ const Pacman = props => {
       downDowned.current
     );
 
-    while (rightDowned.current) {
-      setXPosition(prev => (prev += speed));
-    }
-    while (leftDowned.current) {
-      setXPosition(prev => (prev -= speed));
-    }
-    while (upDowned.current) {
-      setYPosition(prev => (prev -= speed));
-    }
-    while (downDowned.current) {
-      setYPosition(prev => (prev += speed));
-    }
+    // while (rightDowned.current) {
+    //   console.log("while right", rightDowned.current);
+    //   setXPosition(prev => (prev += speed));
+    // }
+    // while (leftDowned.current) {
+    //   setXPosition(prev => (prev -= speed));
+    // }
+    // while (upDowned.current) {
+    //   setYPosition(prev => (prev -= speed));
+    // }
+    // while (downDowned.current) {
+    //   setYPosition(prev => (prev += speed));
+    // }
   }, [downedKey]);
 
-  // useEventListener("keydown", keyDownHandler);
+  useEventListener("keydown", keyDownHandler);
   useEventListener("keyup", keyUpHandler);
 
   return (
