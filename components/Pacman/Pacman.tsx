@@ -105,7 +105,7 @@ const Pacman = props => {
     }, 300);
   }, [downedKey]);
 
-  useEventListener("keydown", keyDownHandler);
+  useEventListener("keyup", keyDownHandler);
 
   return (
     <div className="Pacman">
