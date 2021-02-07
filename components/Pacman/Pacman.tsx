@@ -57,7 +57,7 @@ const Pacman = props => {
     setDownedKey(key)
   };
 
-  const loopPosition = useCallback(() => {
+  const loopPosition = useEffect(() => {
     const interval = setInterval(() => {
       console.log(
         rightDowned.current,
@@ -109,8 +109,6 @@ const Pacman = props => {
       };
     }, 1500);
   }, [downedKey]);
-
-  loopPosition();
 
   useEventListener("keydown", keyDownHandler);
 
