@@ -52,19 +52,14 @@ const Pacman = props => {
     }
   };
 
-  useEffect(() => {
-    console.log("downedKey, upedKey", downedKey, upedKey);
-    console.log(rightDowned, leftDowned, upDowned, downDowned);
-    console.log(
-      rightDowned.current,
-      leftDowned.current,
-      upDowned.current,
-      downDowned.current
-    );
-  }, [downedKey]);
-
   const loopPosition = useCallback(() => {
     const interval = setInterval(() => {
+      console.log(
+        rightDowned.current,
+        leftDowned.current,
+        upDowned.current,
+        downDowned.current
+      );
       if (rightDowned.current) {
         console.log("while right", rightDowned.current);
         setXPosition(prev => {
