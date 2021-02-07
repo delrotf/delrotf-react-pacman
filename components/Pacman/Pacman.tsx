@@ -107,7 +107,7 @@ const Pacman = props => {
       return () => {
         clearInterval(interval);
       };
-    }, 1500);
+    }, 500);
   }, [downedKey]);
 
   useEventListener("keydown", keyDownHandler);
