@@ -12,10 +12,10 @@ const StyledDiv = styled.div`
 
 const Pacman = props => {
   const speed = 1;
-  const xMins = [0];
-  const xMaxes = [500];
-  const yMins = [0];
-  const yMaxes = [500];
+  const xMins = [0, -1];
+  const xMaxes = [500, 501];
+  const yMins = [0, -1];
+  const yMaxes = [500, 501];
   const rightDowned = useRef(false);
   const leftDowned = useRef(false);
   const upDowned = useRef(false);
