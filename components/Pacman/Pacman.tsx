@@ -16,6 +16,7 @@ const Pacman = props => {
   const leftDowned = useRef(false);
   const upDowned = useRef(false);
   const downDowned = useRef(false);
+  
   const [downedKey, setDownedKey] = useState();
   const [upedKey, setUpedKey] = useState();
   const [xPosition, setXPosition] = useState(0);
