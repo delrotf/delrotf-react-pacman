@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useEventListener } from "../../hooks/useEventListener";
 import "./Pacman.scss";
 import styled from "styled-components";
@@ -42,8 +42,6 @@ const Pacman = props => {
         console.log("Do nothing");
         return;
     }
-
-    setDownedKey(key);
   };
 
   const keyUpHandler = ({ key }) => {
@@ -66,8 +64,6 @@ const Pacman = props => {
         console.log("Do nothing");
         return;
     }
-
-    setUpedKey(key);
   };
 
   useEffect(() => {
@@ -79,21 +75,31 @@ const Pacman = props => {
       upDowned.current,
       downDowned.current
     );
-
-    // while (rightDowned.current) {
-    //   console.log("while right", rightDowned.current);
-    //   setXPosition(prev => (prev += speed));
-    // }
-    // while (leftDowned.current) {
-    //   setXPosition(prev => (prev -= speed));
-    // }
-    // while (upDowned.current) {
-    //   setYPosition(prev => (prev -= speed));
-    // }
-    // while (downDowned.current) {
-    //   setYPosition(prev => (prev += speed));
-    // }
   }, [downedKey]);
+
+  const loopPosition = useCallback(() => {
+    const interval = setInterval(() => {
+      if (rightDowned.current) {
+        console.log("while right", rightDowned.current);
+        setXPosition(prev => (prev += speed));
+      }
+      if (leftDowned.current) {
+        setXPosition(prev => (prev -= speed));
+      }
+      if (upDowned.current) {
+        setYPosition(prev => (prev -= speed));
+      }
+      if (downDowned.current) {
+        setYPosition(prev => (prev += speed));
+      }
+
+      return () => {
+        clearInterval(interval);
+      };
+    }, 500);
+  }, []);
+
+  loopPosition();
 
   useEventListener("keydown", keyDownHandler);
   useEventListener("keyup", keyUpHandler);
