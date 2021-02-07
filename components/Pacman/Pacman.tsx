@@ -4,7 +4,7 @@ import "./Pacman.scss";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-transition: transform .3s linear;
+  transition: transform 0.3s linear;
   transform: translate(
     ${props => props.xPosition}px,
     ${props => props.yPosition}px
@@ -55,7 +55,7 @@ const Pacman = props => {
         return;
     }
 
-    setDownedKey(key)
+    setDownedKey(key);
   };
 
   useEffect(() => {
@@ -105,7 +105,7 @@ const Pacman = props => {
     }, 300);
   }, [downedKey]);
 
-  useEventListener("keyup", keyDownHandler);
+  useEventListener("keydown", keyDownHandler);
 
   return (
     <div className="Pacman">
