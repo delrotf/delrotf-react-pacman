@@ -21,7 +21,7 @@ const Pacman = props => {
   const [xPosition, setXPosition] = useState(0);
   const [yPosition, setYPosition] = useState(0);
 
-  const keyDownHandler = key => {
+  const keyDownHandler = ({ key }) => {
     console.log("downed key", key);
 
     switch (key) {
@@ -70,8 +70,6 @@ const Pacman = props => {
   };
 
   useEffect(() => {
-    console.log("downedKey", downedKey);
-
     while (rightDowned.current) {
       setXPosition(prev => (prev += speed));
     }
@@ -88,7 +86,7 @@ const Pacman = props => {
 
   useEventListener("keydown", keyDownHandler);
   useEventListener("keyup", keyUpHandler);
-  
+
   return (
     <div className="Pacman">
       <StyledDiv xPosition={xPosition} yPosition={yPosition} />
