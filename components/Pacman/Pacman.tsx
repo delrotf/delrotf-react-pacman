@@ -4,7 +4,7 @@ import "./Pacman.scss";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-  transition: transform 0.3s linear;
+  transition: transform 0.1s linear;
   transform: translate(
     ${props => props.xPosition}px,
     ${props => props.yPosition}px
@@ -102,7 +102,7 @@ const Pacman = props => {
       return () => {
         clearInterval(interval);
       };
-    }, 300);
+    }, 100);
   }, [downedKey]);
 
   useEventListener("keydown", keyDownHandler);
